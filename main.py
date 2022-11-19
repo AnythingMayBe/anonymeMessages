@@ -27,5 +27,6 @@ def exception(error):
     if isinstance(error, HTTPException):
         return render_template("index.html", error="Error:" + str(error)), 418
     return render_template("index.html", error="Error: " + str(error)), 500
-
-app.run()
+    
+if __name__ == "__main__":
+    app.run()
