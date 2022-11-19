@@ -18,7 +18,7 @@ def post():
 @app.errorhandler(Exception)
 def exception(error):
     if isinstance(error, HTTPException):
-        return render_template("index.html"), 418
-    return render_template("index.html"), 500
+        return render_template("index.html", error="Error:" + str(error)), 418
+    return render_template("index.html", error="Error: " + str(error)), 500
 
 app.run()
