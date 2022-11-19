@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import requests
 from werkzeug.exceptions import HTTPException
+import re
 
 app = Flask(__name__)
 webhookUrl = "" # The webhook URL that will get trigerred.
@@ -11,7 +12,13 @@ def index():
 
 @app.route("/post", methods=["POST"])
 def post():
-    req = requests.post(webhookUrl, data={"content": request.form["message"]})
+    # Checks
+    msg = request.form["message"]
+
+    msg = re.sub("(<[@&].*>)|(@everyone)|(@here)", "<mention>", msg) # Ping-check
+
+    # Send requests
+    req = requests.post(webhookUrl, data={"content": msg})
     return redirect("/")
 
 # Error Handler
