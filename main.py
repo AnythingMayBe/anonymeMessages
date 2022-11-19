@@ -7,7 +7,7 @@ webhookUrl = "" # The webhook URL that will get trigerred.
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", error="")
 
 @app.route("/post", methods=["POST"])
 def post():

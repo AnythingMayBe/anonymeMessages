@@ -18,10 +18,16 @@
         h1 {
             color: #fff;
         }
+
+        .status {
+            color: #fff;
+            border: greenyellow solid 1px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <p class="status">{{ error }}</p>
         <h1>Anonyme Discord Messager</h1>
         <form action="/post" method="post">
             <textarea name="message" id="message" cols="60" rows="20" placeholder="Enter your message here. (max 2000 characters)"></textarea>
